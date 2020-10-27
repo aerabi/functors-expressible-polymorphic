@@ -1,82 +1,60 @@
-\documentclass[10pt, compress]{beamer}
+\documentclass{beamer}
+\usetheme[pageofpages=of,% String used between the current page and the
+                         % total page count.
+          bullet=circle,% Use circles instead of squares for bullets.
+          titleline=true,% Show a line below the frame title.
+          alternativetitlepage=true,% Use the fancy title page.
+          titlepagelogo=logo-uni-freiburg,% Logo for the first page.
+          watermark=watermark-uni-freiburg,% Watermark used in every page.
+          watermarkheight=100px,% Height of the watermark.
+          watermarkheightmult=9,% The watermark image is 4 times bigger
+                                % than watermarkheight.
+          ]{UniFreiburg}
+          
+          
+% color theme
+\usecolortheme{unifreiburg}
 
-\usetheme{m}
+% fonts
+\usepackage[T1]{fontenc}
+\usepackage{tgpagella}
+\usepackage[euler-digits,euler-hat-accent]{eulervm}
+\usepackage{newtxtt}
+\usepackage{yfonts}
+\usepackage{minted}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage{fourier}
+\usepackage{moresize}
+\setbeamertemplate{caption}[numbered]
+
+\usepackage{url}
+\usepackage{hyperref}
 
 \usepackage{proof}
 
-\usepackage{booktabs}
-\usepackage[scale=2]{ccicons}
+\newcommand{\lit}[1]{\mathrm{#1}}
+\newcommand{\tab}{\ \ \ \ }
+
+% use serif
+%\usefonttheme[onlymath]{serif}
+\usefonttheme{serif}
+
+% listing
+\usepackage{listings}
 \usepackage{minted}
-\usepackage{hyperref}
-\usepackage{xcolor}
-\usepackage{amssymb}
+\setbeameroption{show notes}
 
-\usemintedstyle{trac}
+% arial black for title
+\usefonttheme{structurebold}
+\setbeamerfont{title}{series=\bfseries,series=\bfseries,family={\fontfamily{phv}}}
 
-\title{On Functors Expressible in the Polymorphic Typed Lambda Calculus}
-\subtitle{or Why System F does not Possess a Set-Theoretic Model}
-\date{\today}
-\author{Mohammad-Ali \textsc{A'r\^abi}}
-\institute{Albert-Ludwigs-Universit\"at Freiburg}
+\author{Viktoria~\textsc{Schwarz}\\Mohammad-Ali~\textsc{A'r\^abi}}
+\title[Embedded Machine Learning]{EMBEDDED MACHINE LEARNING}
+\institute{\textswab{Albert-Ludwigs-Universit\"at Freiburg}}
+\date{Tuesday, May 21st, 2019}
 
 \begin{document}
-
-\maketitle
-
-\section{Preliminaries}
-
-\begin{frame}[fragile]
-    \frametitle{Polymorphic Typed Lambda Calculus}
-  
-    The
-    \begin{itemize}
-        \item \textbf{System F}
-        \item \textbf{Girard--Reynolds polymorphic lambda calculus}
-        \item \textbf{polymorphic lambda calculus}
-        \item \textbf{second-order lambda calculus}
-    \end{itemize}
-    is an extension of typed lambda calculus, in which types can be passed to functions as arguments.
-  
-    $$
-    \begin{matrix}
-    \infer{\Gamma \vdash M\alpha : b[\alpha/\xi]}{\Gamma \vdash M : \forall\xi.b}
-    \ &\ 
-    \infer{\Gamma \vdash \Lambda\xi. M : \forall\xi.b}{\Gamma \vdash M : b}
-    \end{matrix}
-    $$
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Normality in Polymorphic Typed Lambda Calculus}
-  
-    \begin{itemize}
-        \item In System F, a term is called a \textbf{normal}, if it does not contain any terms of the form $(\lambda x: \alpha. b)(a)$ or $(\Lambda \xi. b)(\alpha)$  \cite{capretta_valentini_1999}.
-        \item The following rules are called $\beta$-contractions:
-        \begin{align*}
-            (\lambda x: \alpha. b)(a) &\rightsquigarrow b [a/x] \\
-            (\Lambda \xi. b)(\alpha) &\rightsquigarrow b [\alpha / \xi]
-        \end{align*}
-        \item A term is called \textbf{normalizable}, if it can be reduced into a normal term through $\beta$-contractions.
-        \item A term is called \textbf{strongly normalizable}, if it can be normalized in finite contractions.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Normality in Polymorphic Typed Lambda Calculus}
-  
-    \begin{itemize}
-        \item All expressions of System F are normalizable \cite{girard1972phd}.
-        \item All expressions of System F are strongly normalizable \cite{PRAWITZ1971235}.
-    \end{itemize}
-\end{frame}
-
-\plain{}{Bibliography}
-
-\begin{frame}{Bibliography}
-\bibliographystyle{amsalpha}
-\bibliography{ref}
-\end{frame}
-
-\plain{}{Questions?}
-
+\include{content}
 \end{document}

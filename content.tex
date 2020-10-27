@@ -1,0 +1,57 @@
+
+\section{Preliminaries}
+
+\begin{frame}[fragile]
+    \frametitle{Polymorphic Typed Lambda Calculus}
+  
+    The
+    \begin{itemize}
+        \item \textbf{System F}
+        \item \textbf{Girard--Reynolds polymorphic lambda calculus}
+        \item \textbf{polymorphic lambda calculus}
+        \item \textbf{second-order lambda calculus}
+    \end{itemize}
+    is an extension of typed lambda calculus, in which types can be passed to functions as arguments.
+  
+    $$
+    \begin{matrix}
+    \infer{\Gamma \vdash M\alpha : b[\alpha/\xi]}{\Gamma \vdash M : \forall\xi.b}
+    \ &\ 
+    \infer{\Gamma \vdash \Lambda\xi. M : \forall\xi.b}{\Gamma \vdash M : b}
+    \end{matrix}
+    $$
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Normality in Polymorphic Typed Lambda Calculus}
+  
+    \begin{itemize}
+        \item In System F, a term is called a \textbf{normal}, if it does not contain any terms of the form $(\lambda x: \alpha. b)(a)$ or $(\Lambda \xi. b)(\alpha)$  \cite{capretta_valentini_1999}.
+        \item The following rules are called $\beta$-contractions:
+        \begin{align*}
+            (\lambda x: \alpha. b)(a) &\rightsquigarrow b [a/x] \\
+            (\Lambda \xi. b)(\alpha) &\rightsquigarrow b [\alpha / \xi]
+        \end{align*}
+        \item A term is called \textbf{normalizable}, if it can be reduced into a normal term through $\beta$-contractions.
+        \item A term is called \textbf{strongly normalizable}, if it can be normalized in finite contractions.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Normality in Polymorphic Typed Lambda Calculus}
+  
+    \begin{itemize}
+        \item All expressions of System F are normalizable \cite{girard1972phd}.
+        \item All expressions of System F are strongly normalizable \cite{PRAWITZ1971235}.
+    \end{itemize}
+\end{frame}
+
+\plain{}{Bibliography}
+
+\begin{frame}{Bibliography}
+\bibliographystyle{amsalpha}
+\bibliography{ref}
+\end{frame}
+
+\plain{}{Questions?}
+
