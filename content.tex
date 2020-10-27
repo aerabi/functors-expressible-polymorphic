@@ -11,7 +11,7 @@
 \section{Preliminaries}
 
 \begin{frame}[fragile]
-    \frametitle{Polymorphic Typed Lambda Calculus}
+    \frametitle{System F}
   
     The
     \begin{itemize}
@@ -32,7 +32,7 @@
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Normality in Polymorphic Typed Lambda Calculus}
+    \frametitle{Normality in System F}
   
     \begin{itemize}
         \item In System F, a term is called a \textbf{normal}, if it does not contain any terms of the form $(\lambda x: \alpha. b)(a)$ or $(\Lambda \xi. b)(\alpha)$  \cite{capretta_valentini_1999}.
@@ -47,18 +47,29 @@
 \end{frame}
 
 \begin{frame}[fragile]
-    \frametitle{Normality in Polymorphic Typed Lambda Calculus}
+    \frametitle{Reynolds' Conjecture}
   
     It is known that:
     \begin{itemize}
         \item All expressions of System F are normalizable \cite{girard1972phd}.
         \item All expressions of System F are strongly normalizable \cite{PRAWITZ1971235}.
+        \item The elements of any free many-sorted anarchic algebra are isomorphic to the closed normal expressions of a type that is determined by the signature of the algebra \cite{BOHM1985135}.
     \end{itemize}
 
     These facts led to the following conjecture:
-    \begin{alertblock}{Conjecture}
+    \begin{block}{Reynolds' Conjecture}
 		System F has a set-theoretic model in which types denote sets and $S \rightarrow S'$ denotes the set of all functions from $S$ to $S'$ \cite{reynolds1983types}.
-	\end{alertblock}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{History}
+  
+    \begin{itemize}
+        \item Reynolds later proved that no such model exists \cite{reynold-not-set-theoretic}.
+        \item Shortly thereafter, Plotkin generalized this proof by considering, for models based upon arbitrary Cartesian closed categories, the behavior of functors that can be defined in the calculus \cite{plotkin-non-existing-article}.
+        \item Later, in a joint paper, they gave an exposition of this generalization, and showed why it precludes the existence of several kinds of model \cite{REYNOLDS19931}.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[t,allowframebreaks]
