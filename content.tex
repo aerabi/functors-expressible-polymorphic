@@ -1,4 +1,6 @@
 
+\plain{}{There is no set-theoretic model for System F, in which types denote sets, and $S \rightarrow S'$ denotes the set of all functions from $S$ to $S'$.}
+
 \section{Preliminaries}
 
 \begin{frame}[fragile]
@@ -40,15 +42,22 @@
 \begin{frame}[fragile]
     \frametitle{Normality in Polymorphic Typed Lambda Calculus}
   
+    It is known that:
     \begin{itemize}
         \item All expressions of System F are normalizable \cite{girard1972phd}.
         \item All expressions of System F are strongly normalizable \cite{PRAWITZ1971235}.
     \end{itemize}
+
+    These facts led to the following conjecture:
+    \begin{alertblock}{Conjecture}
+		System F has a set-theoretic model in which types denote sets and $S \rightarrow S'$ denotes the set of all functions from $S$ to $S'$ \cite{reynolds1983types}.
+	\end{alertblock}
 \end{frame}
 
 \plain{}{Bibliography}
 
-\begin{frame}{Bibliography}
+\begin{frame}
+\frametitle{References}
 \bibliographystyle{amsalpha}
 \bibliography{ref}
 \end{frame}
