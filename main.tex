@@ -2,6 +2,8 @@
 
 \usetheme{m}
 
+\usepackage{proof}
+
 \usepackage{booktabs}
 \usepackage[scale=2]{ccicons}
 \usepackage{minted}
@@ -23,19 +25,25 @@
 \section{Preliminaries}
 
 \begin{frame}[fragile]
-  \frametitle{Polymorphic Typed Lambda Calculus}
+    \frametitle{Polymorphic Typed Lambda Calculus}
   
-  The
-  \begin{itemize}
-      \item \textbf{System F}
-      \item \textbf{Girard--Reynolds polymorphic lambda calculus}
-      \item \textbf{polymorphic lambda calculus}
-      \item \textbf{second-order lambda calculus}
-  \end{itemize}
-  is an extension of typed lambda calculus, in which types can be passed to functions as arguments.
+    The
+    \begin{itemize}
+        \item \textbf{System F}
+        \item \textbf{Girard--Reynolds polymorphic lambda calculus}
+        \item \textbf{polymorphic lambda calculus}
+        \item \textbf{second-order lambda calculus}
+    \end{itemize}
+    is an extension of typed lambda calculus, in which types can be passed to functions as arguments.
+  
+    $$
+    \begin{matrix}
+    \infer[(\forall{}E)]{\Gamma \vdash M\tau : \sigma[\tau/\alpha]}{\Gamma \vdash M : \forall\alpha.\sigma}
+    \ &\ 
+    \infer[(\forall{}I)]{\Gamma \vdash \Lambda\alpha. M : \forall\alpha.\sigma}{\Gamma \vdash M : \sigma}
+    \end{matrix}
+    $$
 \end{frame}
-
-
 
 \plain{}{Questions?}
 
