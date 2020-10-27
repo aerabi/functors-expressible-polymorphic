@@ -1,5 +1,9 @@
 ## On Functors Expressible in the Polymorphic Typed Lambda Calculus
 
-Slides are based on [a paper of the same name](https://www.sciencedirect.com/science/article/pii/S0890540183710370).
+### Build
+Interpret with pdfLaTeX.
 
-LaTeX, Overleaf, and [*mtheme*](http://bloerg.net/2014/09/20/a-modern-beamer-theme.html), the Beamer theme, were used in creating the slides.
+### Notes
+Slides are based on ["On Functors Expressible in the Polymorphic Typed Lambda Calculus"](https://www.sciencedirect.com/science/article/pii/S0890540183710370).
+
+LaTeX, Overleaf, and [`beamer-uni-freiburg`](https://github.com/aerabi/beamer-uni-freiburg), the Beamer theme, were used in creating the slides.
