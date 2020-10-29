@@ -49,6 +49,76 @@
     $$
 \end{frame}
 
+\begin{frame}[allowframebreaks]
+    \frametitle{Formal Definition of System F}
+
+    The languages is built from:
+    \begin{itemize}
+        \item $\mathcal{T}$ infinite set of \textit{type variables},
+        \item $\mathcal{V}$ infinite set of \textit{ordinary variables},
+        \item $\Omega_N$ of \textit{type expressions} over a finite set $N$ of type variables,
+        \item $E_V^N$ of \textit{ordinary expressions} over finite sets $N$ of type variables and $V$ of ordinary variables,
+        \item $\Omega^*_N$ of \textit{type assignments} over $N$, i.e. functions $\pi \colon \mathrm{dom}(\pi) \rightarrow \Omega_N$,
+        \item \textit{typing} relation $\pi \vdash_N e \colon \omega$, for $\pi \in \Omega^*_N$, $\omega \in \Omega_N$, and $e \in E^N_{\mathrm{dom}(\pi)}$.
+    \end{itemize}
+    
+    \framebreak
+    \begin{enumerate}
+        \item If $\tau \in N$, then $\tau \in \Omega_N$.
+        \item If $\omega, \omega' \in N$, then $\omega \rightarrow \omega' \in \Omega_N$.
+        \item If $\tau \in \mathcal{T}$ and $\omega \in \Omega_{N \cup \{\tau\}}$, then $\Delta\tau. \omega \in \Omega_N$.
+        \item If $N \subseteq N'$, then $\Omega_N \subseteq \Omega_{N'}$.
+        \item If $N \subseteq N'$, then $\Omega^*_N \subseteq \Omega^*_{N'}$.
+        \item If $v \in V$ then $v \in E_V^N$.
+        \item If $e, e' \in E_V^N$, then $ee' \in E_V^N$,
+        \item If $v \in \mathcal{V}$, $\omega \in \Omega_N$, and $e \in E_{V \cup \{v\}}^N$, then $\lambda v_\omega. e \in E_V^N$.
+        \item If $e \in E_V^N$ and $\omega \in \Omega_N$, then $e[\omega] \in E_V^N$.
+        \item If $\tau \in \mathcal{T}$ and $e \in E_V^{N \cup \{\tau\}}$, then $\Lambda\tau. e \in E_V^N$.
+        \item If $N \subseteq N'$ and $E \subseteq E'$, then $E_V^N \subseteq E_{V'}^{N'}$.
+        \framebreak
+        \item For $\pi \in \Omega^*_N$ and $v \in \mathrm{dom}(\pi)$,
+        $
+        \infer{\pi \vdash_N v \colon \pi v}{}
+        $.
+        \item For $\pi \in \Omega^*_N$ and $\omega, \omega' \in \Omega_N$,
+        \[
+        \begin{matrix}
+        \infer{\pi \vdash_N e_1e_2 \colon \omega'}{
+            \pi \vdash_N e_1 \colon \omega \rightarrow \omega'
+            &
+            \pi \vdash_N e_2 \colon \omega
+        }
+        ~&~
+        \infer{\pi \vdash_N \lambda v_\omega. e \colon \omega \rightarrow \omega'}{[\pi~|~v\colon\omega] \vdash_N e \colon \omega'}.
+        \end{matrix}
+        \]
+        \setcounter{enumi}{14}
+        \item For $\pi \in \Omega^*_N$, $\omega \in \Omega_N$, and $\tau \in N$,
+        \[
+        \infer{\pi \vdash_N e[\tau] \colon \omega}{\pi \vdash_N e \colon \Delta\tau. \omega}.
+        \]
+        \item For $\pi \in \Omega^*_{N \setminus \{\tau\}}$ and $\omega \in \Omega_{N \cup \{\tau\}}$,
+        \[
+        \infer{\pi \vdash_N \Lambda\tau. e \colon \Delta\tau. \omega}{\pi \vdash_{N \cup \{\tau\}} e \colon \omega}.
+        \]
+        \item For $N \subseteq N'$, $pi \in \Omega^*_N$, and $\omega \in \Omega_N$,
+        \[
+        \infer{\pi \vdash_{N'} e \colon \omega}{\pi \vdash_N e \colon \omega}.
+        \]
+        \item For $\pi, \pi' \in \Omega^*_N$ such that $\pi = \pi'|_{\mathrm{dom}(\pi)}$, and $\omega \in \Omega_N$,
+        \[
+        \infer{\pi' \vdash_N e \colon \omega}{\pi \vdash_N e \colon \omega}.
+        \]
+    \end{enumerate}
+    
+    \begin{itemize}
+        \item [15'.] For $\pi \in \Omega^*_N$, $\omega \in \Omega_{N \cup \{\tau\}}$, and $\omega' \in \Omega_N$,
+        \[
+        \infer{\pi \vdash_N e[\omega'] \colon (\omega / \tau \rightarrow \omega')}{\pi \vdash_N e \colon \Delta\tau.\omega}.
+        \]
+    \end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]
     \frametitle{Normality in System F}
   
