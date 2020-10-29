@@ -49,8 +49,6 @@
     $$
 \end{frame}
 
-\subsection{Normality in System F}
-
 \begin{frame}[fragile]
     \frametitle{Normality in System F}
   
@@ -168,9 +166,46 @@
     \end{itemize}
 \end{frame}
 
+\section{Mathematical Preliminaries}
+
+\subsection{Category}
+
+\begin{frame}[fragile]
+    \frametitle{Category}
+    
+    When $\mathcal{C}$ is a category,
+    \begin{itemize}
+        \item $|\mathcal{C}|$ is the collection of objects of $\mathcal{C}$,
+        \item $k \xrightarrow[\mathcal{C}]{} k'$ denotes the set of morphisms from $k \in |\mathcal{C}|$ to $k' \in |\mathcal{C}|$,
+        \item $\mathcal{C}^{\mathrm{op}}$ denotes the dual of $\mathcal{C}$.
+    \end{itemize}
+\end{frame}
+
+\section{Cartesian Closed Categories and $\mathsf{SET}$}
+
+\begin{frame}[fragile]
+    \frametitle{Cartesian Closed Categories and $\mathbf{\mathsf{SET}}$}
+    
+    A category $\mathcal{C}$ is called Cartesian closed, iff
+    \begin{itemize}
+        \item It has a terminal object,
+        \item If $k, k' \in |\mathcal{C}|$, then $k \times_\mathcal{C} k' \in |\mathcal{C}|$,
+        \item If $k, k' \in |\mathcal{C}|$, then $k' \xRightarrow[\mathcal{C}]{} k = k^{k'} \in |\mathcal{C}|$.
+    \end{itemize}
+    
+    \vspace{1em}
+    As a special case, the category $\mathsf{SET}$ of all sets, with functions as morphisms, is Cartesian closed.
+    \begin{itemize}
+        \item Any singleton set is a terminal object of $\mathsf{SET}$.
+        \item For sets $A, B \in |\mathsf{SET}|$, their Cartesian product $A \times B \in |\mathsf{SET}|$.
+        \item For sets $A, C \in |\mathsf{SET}|$, the set of all functions from $C$ to $A$, $C \xrightarrow[\mathsf{SET}]{} A = A^C \in |\mathsf{SET}|$.
+    \end{itemize}
+\end{frame}
+
 \section{Formal Definition of $\mathcal{K}$-Models}
 
-\begin{frame}[allowframebreaks]
+\watermarkoff
+\begin{frame}[fragile]
     \frametitle{Formal Definition of $\mathcal{K}$-Models}
 
     A $\mathcal{K}$-model of System F, consists of the following:
@@ -182,8 +217,31 @@
             \item If $\omega, \omega' \in \Omega_N$, then $\mathcal{M}O(\omega \rightarrow \omega') = \mathcal{M}O\omega \xRightarrow[\mathcal{K}]{} \mathcal{M}O\omega'$.
             \item If $O = O'|_N$ and $\omega \in \Omega_N$, then $\mathcal{M}O'\omega = \mathcal{M}O\omega$.
         \end{enumerate}
+        \item For each object assignment $O$ with domain $N$, $\pi \in \Omega^*_N$, and $\omega \in \Omega_N$, a semantic function 
+        \[
+        \mu^O_{\pi\omega} \colon E^N_{\pi\omega} \rightarrow \left(\prod^\mathcal{K}\left(\mathcal{M}O \cdot \pi\right) \xrightarrow[\mathcal{K}]{} \mathcal{M}O\omega\right),
+        \]
+        where $\mathcal{M}O \cdot \pi \colon \mathrm{dom}(\pi) \rightarrow |\mathcal{K}|$ is defined by $(\mathcal{M}O \cdot \pi)v = \mathcal{M}O(\pi v)$.
     \end{enumerate}
 \end{frame}
+
+\watermarkon
+\begin{frame}[fragile]
+    \frametitle{Impossible Models}
+    
+    \begin{block}{Theorem}
+		Suppose $\mathcal{K}$ and $\mathcal{K}'$ are Cartesian closed categories such that $\mathcal{K}'$ is a sub-ccc of both $\mathcal{K}$ and $\mathsf{SET}$, there is an object $c$ of $\mathcal{K}'$ that contains more than one member, all objects and morphisms in the range of the functor $Q_c^\mathcal{K}$ belong to $\mathcal{K}'$, and all subsets of the morphism sets of $\mathcal{K}'$ have equalizers. Then there is no $\mathcal{K}$-model.
+	\end{block}
+	
+	\begin{block}{Corollary}
+	    There is no $\mathsf{SET}$-model.
+	\end{block}
+	
+	\begin{proof}
+	Simply, set $\mathcal{K} = \mathcal{K}' = \mathsf{SET}$.
+	\end{proof}
+\end{frame}
+
 
 \begin{frame}[t,allowframebreaks]
 \nocite{*}
