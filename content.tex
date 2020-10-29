@@ -49,6 +49,55 @@
     $$
 \end{frame}
 
+\subsection{Normality in System F}
+
+\begin{frame}[fragile]
+    \frametitle{Normality in System F}
+  
+    \begin{itemize}
+        \item In System F, a term is called a \textit{normal}, if it does not contain any terms of the form $(\lambda x_\alpha. \omega)(a)$ or $(\Lambda \tau. \omega)[\alpha]$  \cite{capretta_valentini_1999}.
+        \item The following rules are called $\beta$-contractions:
+        \begin{align*}
+            (\lambda x_\alpha. \omega)(a) &\rightsquigarrow (\omega / x \rightarrow a) \\
+            (\Lambda \tau. \omega)[\alpha] &\rightsquigarrow (\omega / \tau \rightarrow \alpha)
+        \end{align*}
+        \item A term is called \textit{normalizable}, if it can be reduced into a normal term through $\beta$-contractions.
+        \item A term is called \textit{strongly normalizable}, if it can be normalized in finite contractions.
+    \end{itemize}
+\end{frame}
+
+\subsection{Reynolds' Conjecture}
+
+\begin{frame}[fragile]
+    \frametitle{Reynolds' Conjecture}
+  
+    It is known that:
+    \begin{itemize}
+        \item All expressions of System F are normalizable \cite{girard1972phd}.
+        \item All expressions of System F are strongly normalizable \cite{PRAWITZ1971235}.
+        \item The elements of any free many-sorted anarchic algebra are isomorphic to the closed normal expressions of a type that is determined by the signature of the algebra \cite{BOHM1985135}.
+    \end{itemize}
+
+    These facts led to the following conjecture:
+    \begin{block}{Reynolds' Conjecture}
+		System F has a set-theoretic model in which types denote sets and $S \rightarrow S'$ denotes the set of all functions from $S$ to $S'$ \cite{reynolds1983types}.
+	\end{block}
+\end{frame}
+
+\section{History}
+
+\begin{frame}[fragile]
+    \frametitle{History}
+  
+    \begin{itemize}
+        \item Reynolds later proved that no such model exists \cite{reynold-not-set-theoretic}.
+        \item Shortly thereafter, Plotkin generalized this proof by considering, for models based upon arbitrary Cartesian closed categories, the behavior of functors that can be defined in the calculus \cite{plotkin-non-existing-article}.
+        \item Later, in a joint paper, they gave an exposition of this generalization, and showed why it precludes the existence of several kinds of model \cite{REYNOLDS19931}.
+    \end{itemize}
+\end{frame}
+
+\section{Formal Definition of System F}
+
 \begin{frame}[allowframebreaks]
     \frametitle{Formal Definition of System F}
 
@@ -119,47 +168,21 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-    \frametitle{Normality in System F}
-  
-    \begin{itemize}
-        \item In System F, a term is called a \textbf{normal}, if it does not contain any terms of the form $(\lambda x_\alpha. \omega)(a)$ or $(\Lambda \tau. \omega)[\alpha]$  \cite{capretta_valentini_1999}.
-        \item The following rules are called $\beta$-contractions:
-        \begin{align*}
-            (\lambda x_\alpha. \omega)(a) &\rightsquigarrow (\omega / x \rightarrow a) \\
-            (\Lambda \tau. \omega)[\alpha] &\rightsquigarrow (\omega / \tau \rightarrow \alpha)
-        \end{align*}
-        \item A term is called \textbf{normalizable}, if it can be reduced into a normal term through $\beta$-contractions.
-        \item A term is called \textbf{strongly normalizable}, if it can be normalized in finite contractions.
-    \end{itemize}
-\end{frame}
+\section{Formal Definition of $\mathcal{K}$-Models}
 
-\subsection{Reynolds' Conjecture}
+\begin{frame}[allowframebreaks]
+    \frametitle{Formal Definition of $\mathcal{K}$-Models}
 
-\begin{frame}[fragile]
-    \frametitle{Reynolds' Conjecture}
-  
-    It is known that:
-    \begin{itemize}
-        \item All expressions of System F are normalizable \cite{girard1972phd}.
-        \item All expressions of System F are strongly normalizable \cite{PRAWITZ1971235}.
-        \item The elements of any free many-sorted anarchic algebra are isomorphic to the closed normal expressions of a type that is determined by the signature of the algebra \cite{BOHM1985135}.
-    \end{itemize}
-
-    These facts led to the following conjecture:
-    \begin{block}{Reynolds' Conjecture}
-		System F has a set-theoretic model in which types denote sets and $S \rightarrow S'$ denotes the set of all functions from $S$ to $S'$ \cite{reynolds1983types}.
-	\end{block}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{History}
-  
-    \begin{itemize}
-        \item Reynolds later proved that no such model exists \cite{reynold-not-set-theoretic}.
-        \item Shortly thereafter, Plotkin generalized this proof by considering, for models based upon arbitrary Cartesian closed categories, the behavior of functors that can be defined in the calculus \cite{plotkin-non-existing-article}.
-        \item Later, in a joint paper, they gave an exposition of this generalization, and showed why it precludes the existence of several kinds of model \cite{REYNOLDS19931}.
-    \end{itemize}
+    A $\mathcal{K}$-model of System F, consists of the following:
+    \begin{enumerate}
+        \item A Cartesian closed category $\mathcal{K}$.
+        \item For each object assignment $O$ with domain $N$, a semantic function $\mathcal{M}O \colon \Omega_N \rightarrow |\mathcal{K}|$:
+        \begin{enumerate}
+            \item If $\tau \in N$, then $\mathcal{M}O\tau = O\tau$.
+            \item If $\omega, \omega' \in \Omega_N$, then $\mathcal{M}O(\omega \rightarrow \omega') = \mathcal{M}O\omega \xRightarrow[\mathcal{K}]{} \mathcal{M}O\omega'$.
+            \item If $O = O'|_N$ and $\omega \in \Omega_N$, then $\mathcal{M}O'\omega = \mathcal{M}O\omega$.
+        \end{enumerate}
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}[t,allowframebreaks]
