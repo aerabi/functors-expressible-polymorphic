@@ -2,6 +2,9 @@
 \titlepage
 \end{frame}
 
+% a hack, since colons do not render in the math environments
+\renewcommand{\colon}{\mbox{~:~}}
+
 \begin{frame}[fragile]
     \frametitle{Main Goal}
   
@@ -24,9 +27,18 @@
   
     $$
     \begin{matrix}
-    \infer{\Gamma \vdash M\alpha : b[\alpha/\xi]}{\Gamma \vdash M : \forall\xi.b}
+    \infer{\Gamma \vdash M\alpha \colon \omega[\alpha/\tau]}{\Gamma \vdash M \colon \forall\tau.\omega}
     \ &\ 
-    \infer{\Gamma \vdash \Lambda\xi. M : \forall\xi.b}{\Gamma \vdash M : b}
+    \infer{\Gamma \vdash \Lambda\tau. M \colon \forall\tau.\omega}{\Gamma \vdash M \colon \omega}
+    \end{matrix}
+    $$
+    \pause
+    Or in another notation \cite{REYNOLDS19931}:
+    $$
+    \begin{matrix}
+    \infer{\pi \vdash_N e[\alpha] \colon (\omega / \tau \rightarrow \alpha)}{\pi \vdash_N e \colon \Delta\tau.\omega}
+    \ &\ 
+    \infer{\pi \vdash_N \Lambda\tau. e \colon \Delta\tau.\omega}{\pi \vdash_{N \cup \{\tau\}} e \colon \omega}
     \end{matrix}
     $$
 \end{frame}
@@ -35,11 +47,11 @@
     \frametitle{Normality in System F}
   
     \begin{itemize}
-        \item In System F, a term is called a \textbf{normal}, if it does not contain any terms of the form $(\lambda x: \alpha. b)(a)$ or $(\Lambda \xi. b)(\alpha)$  \cite{capretta_valentini_1999}.
+        \item In System F, a term is called a \textbf{normal}, if it does not contain any terms of the form $(\lambda x_\alpha. \omega)(a)$ or $(\Lambda \tau. \omega)[\alpha]$  \cite{capretta_valentini_1999}.
         \item The following rules are called $\beta$-contractions:
         \begin{align*}
-            (\lambda x: \alpha. b)(a) &\rightsquigarrow b [a/x] \\
-            (\Lambda \xi. b)(\alpha) &\rightsquigarrow b [\alpha / \xi]
+            (\lambda x_\alpha. \omega)(a) &\rightsquigarrow (\omega / x \rightarrow a) \\
+            (\Lambda \tau. \omega)[\alpha] &\rightsquigarrow (\omega / \tau \rightarrow \alpha)
         \end{align*}
         \item A term is called \textbf{normalizable}, if it can be reduced into a normal term through $\beta$-contractions.
         \item A term is called \textbf{strongly normalizable}, if it can be normalized in finite contractions.
