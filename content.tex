@@ -166,6 +166,25 @@
     \end{itemize}
 \end{frame}
 
+\section{Categorical Motivation}
+
+\begin{frame}[fragile]
+    \frametitle{Categorical Motivation}
+    
+    Given a model of System F based upon a Cartesian closed category $\mathcal{K}$, there will be a functors from $\mathcal{K}$ to $\mathcal{K}$ whose
+    \begin{itemize}
+        \item Actions on objects can be expressed by type expressions,
+        \item Actions on morphisms can be expressed by ordinary expressions.
+    \end{itemize}
+    
+    \vspace{1em}
+    If $T$ is such a functor, then
+    \begin{itemize}
+        \item there is a weak initial $T$-algebra,
+        \item if $\mathcal{K}$ possesses equalizers of all subsets of its morphism sets, there is a $T$-algebra.
+    \end{itemize}
+\end{frame}
+
 \section{Mathematical Preliminaries}
 
 \subsection{Category}
@@ -181,7 +200,22 @@
     \end{itemize}
 \end{frame}
 
-\section{Cartesian Closed Categories and $\mathsf{SET}$}
+\subsection{Category Exponentiation}
+
+\begin{frame}[fragile]
+    \frametitle{Category Exponentiation}
+    
+    When $\mathcal{C}$ is a category which closed under finite products, and $k', k'' \in |\mathcal{C}|$, then an \textit{exponentiation} of $k''$ by $k'$ consists of an object $k' \xRightarrow[\mathcal{C}]{} k''$ and a morphism $\mathrm{ap}^\mathcal{C}_{k'k''} \in \left( k' \xRightarrow[\mathcal{C}]{} k'' \right) \times k' \rightarrow k''$ such that, for each $k \in |\mathcal{C}|$ and $\rho \in k \times k' \rightarrow k''$, there is a unique morphism, denoted by $\mathrm{ab}^\mathcal{C}_\rho$, in $k \rightarrow (k' \xRightarrow[\mathcal{C}]{} k'')$ such that
+    \[
+        \begin{tikzcd}[column sep = huge]
+        k \times k' \arrow[r, "\mathrm{ab}^\mathcal{C} \rho \times I_{k'}"] \arrow[rd, "\rho"] & (k' \xRightarrow[\mathcal{C}]{} k'') \times k' \arrow[d, "\mathrm{ap}^\mathcal{C}_{k'k''}"] \\
+        & k''
+        \end{tikzcd}
+    \]
+    commutes in $\mathcal{C}$.
+\end{frame}
+
+\subsection{Cartesian Closed Categories and $\mathsf{SET}$}
 
 \begin{frame}[fragile]
     \frametitle{Cartesian Closed Categories and $\mathbf{\mathsf{SET}}$}
@@ -200,6 +234,14 @@
         \item For sets $A, B \in |\mathsf{SET}|$, their Cartesian product $A \times B \in |\mathsf{SET}|$.
         \item For sets $A, C \in |\mathsf{SET}|$, the set of all functions from $C$ to $A$, $C \xrightarrow[\mathsf{SET}]{} A = A^C \in |\mathsf{SET}|$.
     \end{itemize}
+\end{frame}
+
+\subsection{The Functor $Q_c^\mathcal{C}$}
+
+\begin{frame}[fragile]
+    \frametitle{The Functor $Q_c^\mathcal{C}$}
+    
+    For any object $c$ of a Cartesian closed category $\mathcal{C}$, there is a functor $Q_c^\mathcal{C} \colon \mathcal{C} \rightarrow \mathcal{C}^{\mathrm{op}}$, such that $Q_c^\mathcal{C}(k) = k \xRightarrow[\mathcal{C}]{} c$ for all $k \in |\mathcal{C}|$.
 \end{frame}
 
 \section{Formal Definition of $\mathcal{K}$-Models}
@@ -224,6 +266,8 @@
         where $\mathcal{M}O \cdot \pi \colon \mathrm{dom}(\pi) \rightarrow |\mathcal{K}|$ is defined by $(\mathcal{M}O \cdot \pi)v = \mathcal{M}O(\pi v)$.
     \end{enumerate}
 \end{frame}
+
+\section{Impossible Models}
 
 \watermarkon
 \begin{frame}[fragile]
